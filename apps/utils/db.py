@@ -10,6 +10,12 @@ def init_db(app):
     with app.app_context():
         engine = db.engine
         inspector = inspect(engine)
-        if not inspector.has_table("orders") or not inspector.has_table("order_product"):
+        
+        required_tables = {"products", "categories"}
+        existing_tables = set(inspector.get_table_names())
+        
+        if not required_tables.issubset(existing_tables):
             db.create_all()
-            current_app.logger.info("Database tables created.")
+            current_app.logger.info("Product & Category tables created.")
+        else:
+            current_app.logger.info("Database tables already exist.")
