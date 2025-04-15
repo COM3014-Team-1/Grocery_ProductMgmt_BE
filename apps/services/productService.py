@@ -3,9 +3,11 @@ from apps.exception.exceptions import ProductNotFoundError, CategoryNotFoundErro
 from flask import current_app
 from sqlalchemy.exc import SQLAlchemyError
 
+
+
 class ProductService:
     def __init__(self):
-        self.repo = ProductRepository()
+        self.repo = ProductRepository()  # Use 'repo' here to match your init method
 
     def get_products(self):
         try:
@@ -75,4 +77,20 @@ class ProductService:
             return categories
         except Exception as e:
             current_app.logger.error(f"Error fetching categories: {str(e)}")
+            raise e
+
+    def search_products(self, filters):
+        try:
+            products = self.repo.get_products_by_search_criteria(
+                name=filters.get('name'),
+                min_price=filters.get('min_price'),
+                max_price=filters.get('max_price'),
+                category_id=filters.get('category_id'),
+                is_halal=filters.get('is_halal'),
+                is_vegan=filters.get('is_vegan'),
+                min_rating=filters.get('min_rating')
+            )
+            return products
+        except Exception as e:
+            current_app.logger.error(f"Error searching products: {str(e)}")
             raise e

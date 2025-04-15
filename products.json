@@ -1,0 +1,223 @@
+[
+  {
+    "name": "Apple",
+    "description": "A crisp and sweet red apple, handpicked from orchards in Kent, UK. Known for its juicy, refreshing taste, this apple is perfect for snacking or making pies.",
+    "price": 0.99,
+    "quantity": 100,
+    "category_name": "Fruits",
+    "image_url": "",
+    "rating": 4.5,
+    "is_halal": true,
+    "is_vegan": true
+  },
+  {
+    "name": "Banana",
+    "description": "Sweet, ripe bananas sourced from sustainable UK suppliers who import them from tropical regions like the Canary Islands. Rich in potassium and perfect for smoothies, baking, or eating on-the-go.",
+    "price": 0.59,
+    "quantity": 150,
+    "category_name": "Fruits",
+    "image_url": "",
+    "rating": 4.2,
+    "is_halal": true,
+    "is_vegan": true
+  },
+  {
+    "name": "Mango",
+    "description": "A juicy and aromatic mango imported to the UK from the Caribbean, known for its rich tropical flavor. Ideal for smoothies, salads, or desserts.",
+    "price": 1.49,
+    "quantity": 80,
+    "category_name": "Fruits",
+    "image_url": "",
+    "rating": 4.7,
+    "is_halal": true,
+    "is_vegan": true
+  },
+  {
+    "name": "Grapes",
+    "description": "Sweet and seedless grapes grown in vineyards in South Wales. These grapes are packed with antioxidants and are perfect for snacking or adding to salads.",
+    "price": 2.99,
+    "quantity": 90,
+    "category_name": "Fruits",
+    "image_url": "",
+    "rating": 4.4,
+    "is_halal": true,
+    "is_vegan": true
+  },
+  {
+    "name": "Strawberry",
+    "description": "Fresh, plump strawberries grown in the fields of Kent, UK. These berries are bursting with sweetness and perfect for making jams, cakes, or enjoying fresh.",
+    "price": 3.49,
+    "quantity": 60,
+    "category_name": "Fruits",
+    "image_url": "",
+    "rating": 4.6,
+    "is_halal": true,
+    "is_vegan": true
+  },
+  {
+    "name": "Pineapple",
+    "description": "Sweet, tangy pineapples imported to the UK from Costa Rica. Their juicy flesh makes them perfect for grilling, smoothies, or adding a tropical flair to fruit salads.",
+    "price": 2.29,
+    "quantity": 70,
+    "category_name": "Fruits",
+    "image_url": "",
+    "rating": 4.3,
+    "is_halal": true,
+    "is_vegan": true
+  },
+  {
+    "name": "Orange",
+    "description": "Tangy and refreshing oranges imported from Spain to the UK. These oranges are packed with vitamin C and are perfect for fresh juice or a healthy snack.",
+    "price": 0.89,
+    "quantity": 110,
+    "category_name": "Fruits",
+    "image_url": "",
+    "rating": 4.5,
+    "is_halal": true,
+    "is_vegan": true
+  },
+  {
+    "name": "Peach",
+    "description": "Sweet, juicy peaches grown in the orchards of Gloucestershire, UK. These peaches have a velvety skin and a rich, fragrant taste, perfect for desserts or fresh eating.",
+    "price": 1.29,
+    "quantity": 65,
+    "category_name": "Fruits",
+    "image_url": "",
+    "rating": 4.4,
+    "is_halal": true,
+    "is_vegan": true
+  },
+  {
+    "name": "Kiwi",
+    "description": "Tart and sweet kiwis grown in the UK’s greenhouses. With a fuzzy skin and vibrant green flesh, this fruit is a great addition to smoothies, fruit bowls, or as a standalone snack.",
+    "price": 1.19,
+    "quantity": 75,
+    "category_name": "Fruits",
+    "image_url": "",
+    "rating": 4.2,
+    "is_halal": true,
+    "is_vegan": true
+  },
+  {
+    "name": "Watermelon",
+    "description": "A refreshing, seedless watermelon grown in greenhouses in the UK. Perfect for hot summer days, this watermelon is juicy, sweet, and hydrating.",
+    "price": 3.99,
+    "quantity": 40,
+    "category_name": "Fruits",
+    "image_url": "",
+    "rating": 4.6,
+    "is_halal": true,
+    "is_vegan": true
+  },
+  {
+    "name": "Carrot",
+    "description": "Fresh, crunchy carrots harvested from organic farms in Norfolk, UK. These carrots are perfect for snacks, soups, or juicing, and are full of nutrients like beta-carotene.",
+    "price": 0.79,
+    "quantity": 200,
+    "category_name": "Vegetables",
+    "image_url": "",
+    "rating": 4.3,
+    "is_halal": true,
+    "is_vegan": true
+  },
+  {
+    "name": "Broccoli",
+    "description": "Bright green broccoli florets, freshly picked from farms in Somerset, UK. Known for their rich vitamin C and fiber content, these are perfect for steaming or adding to stir-fries.",
+    "price": 1.29,
+    "quantity": 150,
+    "category_name": "Vegetables",
+    "image_url": "",
+    "rating": 4.4,
+    "is_halal": true,
+    "is_vegan": true
+  },
+  {
+    "name": "Spinach",
+    "description": "Organic, tender spinach leaves harvested from farms in the UK. These greens are packed with iron and vitamins and are perfect for salads, smoothies, or sautéing.",
+    "price": 1.19,
+    "quantity": 180,
+    "category_name": "Vegetables",
+    "image_url": "",
+    "rating": 4.2,
+    "is_halal": true,
+    "is_vegan": true
+  },
+  {
+    "name": "Cucumber",
+    "description": "Crisp and cool cucumbers grown in greenhouses across the UK. Ideal for fresh salads or making refreshing cucumber water.",
+    "price": 0.89,
+    "quantity": 160,
+    "category_name": "Vegetables",
+    "image_url": "",
+    "rating": 4.3,
+    "is_halal": true,
+    "is_vegan": true
+  },
+  {
+    "name": "Tomato",
+    "description": "Juicy, vine-ripened tomatoes sourced from local UK farms. These tomatoes are perfect for fresh salads, salsas, or sauces, with a naturally sweet and tangy flavor.",
+    "price": 0.99,
+    "quantity": 170,
+    "category_name": "Vegetables",
+    "image_url": "",
+    "rating": 4.5,
+    "is_halal": true,
+    "is_vegan": true
+  },
+  {
+    "name": "Potato",
+    "description": "Starchy and versatile potatoes, harvested from the fertile fields of Lincolnshire, UK. Perfect for baking, mashing, or frying, these potatoes are a kitchen staple.",
+    "price": 1.09,
+    "quantity": 190,
+    "category_name": "Vegetables",
+    "image_url": "",
+    "rating": 4.6,
+    "is_halal": true,
+    "is_vegan": true
+  },
+  {
+    "name": "Onion",
+    "description": "Sweet yellow onions grown in the rich soils of Yorkshire, UK. These onions add rich flavor to any dish, from soups to salads.",
+    "price": 0.69,
+    "quantity": 210,
+    "category_name": "Vegetables",
+    "image_url": "",
+    "rating": 4.1,
+    "is_halal": true,
+    "is_vegan": true
+  },
+  {
+    "name": "Bell Pepper",
+    "description": "Vibrant bell peppers, grown in the sunny fields of the UK. These peppers come in a variety of colors and are perfect for stir-fries, grilling, or stuffing.",
+    "price": 1.59,
+    "quantity": 140,
+    "category_name": "Vegetables",
+    "image_url": "",
+    "rating": 4.4,
+    "is_halal": true,
+    "is_vegan": true
+  },
+  {
+    "name": "Zucchini",
+    "description": "Tender green zucchini, grown organically in the UK. Perfect for grilling, sautéing, or making zucchini noodles for a healthy, low-carb meal.",
+    "price": 1.39,
+    "quantity": 100,
+    "category_name": "Vegetables",
+    "image_url": "",
+    "rating": 4.2,
+    "is_halal": true,
+    "is_vegan": true
+  },
+  {
+    "name": "Cauliflower",
+    "description": "Fresh cauliflower heads, harvested from organic farms in the UK. With a mild taste, this vegetable is great for roasting, making cauliflower rice, or as a low-carb substitute in dishes.",
+    "price": 1.79,
+    "quantity": 120,
+    "category_name": "Vegetables",
+    "image_url": "",
+    "rating": 4.3,
+    "is_halal": true,
+    "is_vegan": true
+  }
+]
+

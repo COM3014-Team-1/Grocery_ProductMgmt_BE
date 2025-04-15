@@ -74,3 +74,24 @@ def delete_product(product_id):
         return jsonify(result), 200
     except Exception as e:
         return handle_service_error(e)
+
+# apps/controllers/productController.py
+
+@product_bp.route('/products/search', methods=['GET'])
+def search_products():
+    try:
+        filters = {
+            'name': request.args.get('name'),
+            'min_price': float(request.args.get('min_price')) if request.args.get('min_price') else None,
+            'max_price': float(request.args.get('max_price')) if request.args.get('max_price') else None,
+            'category_id': request.args.get('category_id'),
+            'is_halal': request.args.get('is_halal') == 'true' if request.args.get('is_halal') else None,
+            'is_vegan': request.args.get('is_vegan') == 'true' if request.args.get('is_vegan') else None,
+            'min_rating': float(request.args.get('min_rating')) if request.args.get('min_rating') else None,
+        }
+
+        products = product_service.search_products(filters)  # Calling the search_products method here
+        return jsonify([ProductSchema().dump(product) for product in products]), 200
+    except Exception as e:
+        return handle_service_error(e)
+

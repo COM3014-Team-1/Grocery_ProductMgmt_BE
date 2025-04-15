@@ -21,16 +21,9 @@ class Product(db.Model):
 
     category = db.relationship('Category', backref=db.backref('products', lazy=True))
 
-    def __init__(self, name, description, price, quantity, category_id, image_url=None, rating=0.0, is_halal=False, is_vegan=False):
-        self.name = name
-        self.description = description
-        self.price = price
-        self.quantity = quantity
-        self.category_id = category_id
-        self.image_url = image_url
-        self.rating = rating
-        self.is_halal = is_halal
-        self.is_vegan = is_vegan
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+
 
     def serialize(self):
         """Serialize product object to dictionary for response"""
