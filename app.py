@@ -23,8 +23,8 @@ def create_app():
     app.register_blueprint(product_bp)
     app.register_blueprint(category_bp)
 
-    #with app.app_context():
-    #    seed_database()
+    with app.app_context():
+        seed_database()
 
     return app
 
