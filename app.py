@@ -23,11 +23,11 @@ def create_app():
     app.register_blueprint(product_bp)
     app.register_blueprint(category_bp)
 
-    with app.app_context():
-        seed_database()
+    #with app.app_context():
+    #    seed_database()
 
     return app
 
 if __name__ == '__main__':
     app = create_app()
-    app.run(host='localhost', port='5000', debug=True)
+    app.run(host='localhost', port='5001', debug=True)
