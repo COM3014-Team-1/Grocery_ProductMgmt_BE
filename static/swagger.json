@@ -4,6 +4,11 @@
     "title": "Product Management API",
     "version": "1.0.0"
   },
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
   "paths": {
     "/categories": {
       "post": {
@@ -506,6 +511,13 @@
             "type": "boolean"
           }
         }
+      }
+    },
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
       }
     }
   }

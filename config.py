@@ -12,6 +12,7 @@ def load_config():
 appsettings = load_config()
 
 class Config:
+    SECRET_KEY=appsettings['SECRET_KEY']
     SQLALCHEMY_DATABASE_URI = appsettings['DATABASE_URL']
     SQLALCHEMY_TRACK_MODIFICATIONS = appsettings['DEBUG']
 

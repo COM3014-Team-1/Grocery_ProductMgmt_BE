@@ -52,6 +52,6 @@ with app.app_context():
             db.session.add(new_product)
 
         db.session.commit()
-        print("✅ Database seeding completed successfully.")
+        print("Database seeding completed successfully.")
     except Exception as e:
-        print("❌ Error while seeding the database:", e)
+        print("Error while seeding the database:", e)
