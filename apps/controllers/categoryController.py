@@ -17,9 +17,10 @@ def get_categories():
     try:
         categories = category_service.get_categories()
         schema = CategorySchema(many=True)
+        # The 'category_imageurl' will now be part of the response due to the updated schema
         return jsonify(schema.dump(categories)), 200
     except Exception as e:
-        return handle_service_error(e) 
+        return handle_service_error(e)
 
 @category_bp.route('/categories/<uuid:category_id>', methods=['GET'])
 @jwt_required()
@@ -28,6 +29,7 @@ def get_category(category_id):
     try:
         category = category_service.get_category_by_id(category_id)
         schema = CategorySchema()
+        # The 'category_imageurl' will now be part of the response due to the updated schema
         return jsonify(schema.dump(category)), 200
     except Exception as e:
         return handle_service_error(e)
@@ -39,13 +41,15 @@ def add_category():
     try:
         data = request.get_json()
         schema = CategorySchema()
-        validated_data = schema.load(data) 
+        validated_data = schema.load(data)
+        
+        # Ensure 'category_imageurl' is included in the request body and passed to the service
         category = category_service.add_category(validated_data)
         return jsonify(schema.dump(category)), 201
     except ValidationError as err:
         return jsonify({"message": "Validation error", "errors": err.messages}), 400
     except Exception as e:
-        return handle_service_error(e)  
+        return handle_service_error(e)
 
 @category_bp.route('/categories/<uuid:category_id>', methods=['DELETE'])
 @jwt_required()
@@ -55,4 +59,4 @@ def delete_category(category_id):
         result = category_service.delete_category(category_id)
         return jsonify(result), 200
     except Exception as e:
-        return handle_service_error(e) 
+        return handle_service_error(e)

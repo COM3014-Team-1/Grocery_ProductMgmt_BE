@@ -29,6 +29,7 @@ class CategoryService:
 
     def add_category(self, data):
         try:
+            # Ensure category_imageurl is in the data and passed to the repository
             category = self.repo.create_category(data)
             if not category:
                 raise ValueError("Failed to create category.")
