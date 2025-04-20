@@ -70,3 +70,6 @@ class ProductRepository:
             query = query.filter(Product.rating >= min_rating)
 
         return query.all()
+    
+    def get_all_poducts(self,product_ids):
+        return Product.query.filter(Product.product_id.in_(product_ids)).all()

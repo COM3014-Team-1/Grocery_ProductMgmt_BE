@@ -94,3 +94,25 @@ class ProductService:
         except Exception as e:
             current_app.logger.error(f"Error searching products: {str(e)}")
             raise e
+        
+    def check_product_avalibility(self, products_list):
+        try:
+            product_ids = [str(item['product_id']) for item in products_list]
+            products = self.repo.get_all_poducts(product_ids)
+            requested_quantities = {
+                str(item['product_id']): item['quantity'] for item in products_list
+            }
+            result = []
+            for product in products:
+                requested_qty = requested_quantities.get(str(product.product_id), 0)
+                result.append( {
+                    "product_id":product.product_id,
+                    "in_stock": product.quantity >= requested_qty,
+                    "available_quantity": product.quantity,
+                    "requested_quantity": requested_qty
+                })
+            current_app.logger.info("Result of products from order service: " + str(result))
+            return result
+        except Exception as e:
+            current_app.logger.error(f"Error checking product availability: {str(e)}")
+            raise e

@@ -4,12 +4,16 @@ from apps.schemas.productSchema import ProductSchema, ProductUpdateSchema
 from apps.schemas.categorySchema import CategorySchema
 from marshmallow import ValidationError
 from apps.utils.errorHandler import handle_service_error
+from flask_jwt_extended import jwt_required
+from apps.utils.authenticator import roles_allowed
 
 product_bp = Blueprint('product', __name__)
 
 product_service = ProductService()
 
 @product_bp.route('/products', methods=['GET'])
+@jwt_required()
+@roles_allowed(['user'])
 def get_products():
     try:
         products = product_service.get_products()
@@ -18,6 +22,8 @@ def get_products():
         return handle_service_error(e)
 
 @product_bp.route('/products/<uuid:product_id>', methods=['GET'])
+@jwt_required()
+@roles_allowed(['user'])
 def get_product_by_id(product_id):
     try:
         product = product_service.get_product_by_id(product_id)
@@ -26,6 +32,8 @@ def get_product_by_id(product_id):
         return handle_service_error(e)
 
 @product_bp.route('/categories', methods=['GET'])
+@jwt_required()
+@roles_allowed(['user'])
 def get_categories():
     try:
         categories = product_service.get_categories()
@@ -34,6 +42,8 @@ def get_categories():
         return handle_service_error(e)
 
 @product_bp.route('/products/category/<uuid:category_id>', methods=['GET'])
+@jwt_required()
+@roles_allowed(['user'])
 def get_products_by_category(category_id):
     try:
         products = product_service.get_products_by_category(category_id)
@@ -42,6 +52,8 @@ def get_products_by_category(category_id):
         return handle_service_error(e)
 
 @product_bp.route('/products', methods=['POST'])
+@jwt_required()
+@roles_allowed(['user'])
 def add_product():
     try:
         data = request.get_json()
@@ -55,6 +67,8 @@ def add_product():
         return handle_service_error(e)
 
 @product_bp.route('/products/<uuid:product_id>', methods=['PUT'])
+@jwt_required()
+@roles_allowed(['user'])
 def update_product(product_id):
     try:
         data = request.get_json()
@@ -68,6 +82,8 @@ def update_product(product_id):
         return handle_service_error(e)
 
 @product_bp.route('/products/<uuid:product_id>', methods=['DELETE'])
+@jwt_required()
+@roles_allowed(['user'])
 def delete_product(product_id):
     try:
         result = product_service.delete_product(product_id)
@@ -78,6 +94,8 @@ def delete_product(product_id):
 # apps/controllers/productController.py
 
 @product_bp.route('/products/search', methods=['GET'])
+@jwt_required()
+@roles_allowed(['user'])
 def search_products():
     try:
         filters = {
@@ -95,3 +113,16 @@ def search_products():
     except Exception as e:
         return handle_service_error(e)
 
+
+@product_bp.route('/products/check_availability', methods=['POST'])
+@jwt_required()
+@roles_allowed(['user'])
+def check_product_avaliability():
+    try:
+        data=request.get_json()
+        current_app.logger.info("check the product avalibility"+str(data))
+        product_ids=data.get('product_ids',[])
+        result = product_service.check_product_avalibility(product_ids)
+        return jsonify(result), 200
+    except Exception as e:
+        return handle_service_error(e)
