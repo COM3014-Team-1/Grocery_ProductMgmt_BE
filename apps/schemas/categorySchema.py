@@ -6,3 +6,4 @@ class CategorySchema(Schema):
     category_id = fields.UUID()
     name = fields.Str(required=True)
     description = fields.Str(allow_none=True)
+    category_imageurl = fields.Str(allow_none=True)
