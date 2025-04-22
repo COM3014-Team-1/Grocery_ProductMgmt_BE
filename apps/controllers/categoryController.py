@@ -3,16 +3,13 @@ from apps.services.categoryService import CategoryService
 from apps.schemas.categorySchema import CategorySchema
 from marshmallow import ValidationError
 from apps.utils.errorHandler import handle_service_error 
-from flask_jwt_extended import jwt_required 
-from apps.utils.authenticator import roles_allowed
+
 
 category_bp = Blueprint('category', __name__)
 
 category_service = CategoryService()
 
 @category_bp.route('/categories', methods=['GET'])
-@jwt_required()
-@roles_allowed(['user'])
 def get_categories():
     try:
         categories = category_service.get_categories()
@@ -22,8 +19,6 @@ def get_categories():
         return handle_service_error(e)
 
 @category_bp.route('/categories/<uuid:category_id>', methods=['GET'])
-@jwt_required()
-@roles_allowed(['user'])
 def get_category(category_id):
     try:
         category = category_service.get_category_by_id(category_id)
@@ -33,8 +28,6 @@ def get_category(category_id):
         return handle_service_error(e)
 
 @category_bp.route('/categories', methods=['POST'])
-@jwt_required()
-@roles_allowed(['user'])
 def add_category():
     try:
         data = request.get_json()
@@ -50,8 +43,6 @@ def add_category():
         return handle_service_error(e)
 
 @category_bp.route('/categories/<uuid:category_id>', methods=['DELETE'])
-@jwt_required()
-@roles_allowed(['user'])
 def delete_category(category_id):
     try:
         result = category_service.delete_category(category_id)

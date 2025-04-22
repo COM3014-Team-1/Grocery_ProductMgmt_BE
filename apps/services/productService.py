@@ -2,12 +2,11 @@ from apps.repository.productRepository import ProductRepository
 from apps.exception.exceptions import ProductNotFoundError, CategoryNotFoundError
 from flask import current_app
 from sqlalchemy.exc import SQLAlchemyError
-
-
+from apps.schemas.productSchema import ProductSchema
 
 class ProductService:
     def __init__(self):
-        self.repo = ProductRepository()  # Use 'repo' here to match your init method
+        self.repo = ProductRepository() 
 
     def get_products(self):
         try:
@@ -95,24 +94,33 @@ class ProductService:
             current_app.logger.error(f"Error searching products: {str(e)}")
             raise e
         
-    def check_product_avalibility(self, products_list):
-        try:
-            product_ids = [str(item['product_id']) for item in products_list]
-            products = self.repo.get_all_poducts(product_ids)
-            requested_quantities = {
-                str(item['product_id']): item['quantity'] for item in products_list
-            }
-            result = []
-            for product in products:
-                requested_qty = requested_quantities.get(str(product.product_id), 0)
-                result.append( {
-                    "product_id":product.product_id,
-                    "in_stock": product.quantity >= requested_qty,
-                    "available_quantity": product.quantity,
-                    "requested_quantity": requested_qty
+    def update_product_quantities(self, product_updates):
+        updated = []
+        errors = []
+
+        for item in product_updates:
+            try:
+                product_id = item.get("product_id")
+                quantity = item.get("quantity")
+
+                if not product_id or quantity is None:
+                    raise ValueError("Both 'product_id' and 'quantity' are required.")
+
+                product = self.repo.get_product_by_id(product_id)
+                if not product:
+                    raise ProductNotFoundError(f"Product with ID {product_id} not found.")
+
+                updated_quantity = product.quantity - quantity
+                if updated_quantity < 0:
+                    raise ValueError(f"Insufficient quantity for product {product_id}. Available: {product.quantity}")
+
+                updated_product = self.repo.update_product(product_id, {"quantity": updated_quantity})
+                updated.append(ProductSchema().dump(updated_product))
+            except Exception as e:
+                current_app.logger.error(f"Failed to update quantity for product {item.get('product_id')}: {str(e)}")
+                errors.append({
+                    "product_id": item.get("product_id"),
+                    "Available": product.quantity,
+                    "error": str(e)
                 })
-            current_app.logger.info("Result of products from order service: " + str(result))
-            return result
-        except Exception as e:
-            current_app.logger.error(f"Error checking product availability: {str(e)}")
-            raise e
+        return {"updated": updated, "errors": errors}
