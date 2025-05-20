@@ -5,15 +5,15 @@ services:
     ports:
       - "5000:5000"
     environment:
-      DATABASE_URL: postgresql://grocery_user:grocery_password@db:5432/grocery_db
+      DATABASE_URL: postgresql://postgres:SHMIgtBBk1zQKYhMSmDX@database-1.c3u0oys8ik2c.eu-west-2.rds.amazonaws.com:5432/grocery_Product
     depends_on:
       - db
     command: ["flask", "db", "upgrade", "&&", "flask", "run", "--host", "0.0.0.0"]
   db:
     image: postgres:13
     environment:
-      POSTGRES_USER: grocery_user
-      POSTGRES_PASSWORD: grocery_password
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
       POSTGRES_DB: grocery_db
     ports:
       - "5432:5432"
