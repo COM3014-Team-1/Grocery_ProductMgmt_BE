@@ -5,7 +5,7 @@ services:
     ports:
       - "5000:5000"
     environment:
-      DATABASE_URL: postgresql://postgres:SHMIgtBBk1zQKYhMSmDX@database-1.c3u0oys8ik2c.eu-west-2.rds.amazonaws.com:5432/grocery_Product
+      DATABASE_URL: postgresql://USERNAME:PASSWORD@HOST:PORT/grocery_Product
     depends_on:
       - db
     command: ["flask", "db", "upgrade", "&&", "flask", "run", "--host", "0.0.0.0"]
